@@ -1,10 +1,9 @@
 #!/usr/bin/env ruby
 
 require 'yaml'
-require 'pp'
-require_relative './options.rb'
-require_relative './report.rb'
+require_relative './lib/options.rb'
+require_relative './lib/report.rb'
 
-options = Options.parse 'config.yml'
+options = Options.parse
 
 Report.new(options).summary

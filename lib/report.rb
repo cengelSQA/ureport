@@ -1,4 +1,4 @@
-require_relative './testrail-api/ruby/testrail.rb'
+require_relative '../testrail-api/ruby/testrail.rb'
 
 class Report
 

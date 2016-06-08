@@ -1,11 +1,14 @@
 require 'optionparser'
 
 module Options
-	def self.parse(config = '')
-		@config = config
+
+	VALID_ATTR = ['id', 'url', 'email', 'key']
+
+	def self.parse
+		@config = 'config.yml'
 		@options = {}
 		OptionParser.new do |opts|
-			opts.banner = "#{__FILE__} [OPTIONS]"
+			opts.banner = "Usage: ureport [OPTIONS]"
 
 			opts.on('-u=', '--url=', 'Testrail URL') do |u|
 				@options['url'] = u
@@ -24,6 +27,7 @@ module Options
 			end
 		end.parse!
 		merge_config
+		validate
 		@options['id'] = @options['id'].gsub('R', '')
 		@options
 	end
@@ -36,4 +40,13 @@ module Options
 		end
 	end
 
+	def self.validate
+		VALID_ATTR.each do |attr|
+			if @options[attr].nil?
+				puts "Missing option '#{attr}'" 
+				exit
+			end
+		end
+		
+	end
 end
