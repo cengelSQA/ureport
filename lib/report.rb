@@ -1,4 +1,4 @@
-require_relative '../testrail-api/ruby/testrail.rb'
+require_relative 'testrail-api/ruby/testrail'
 
 class Report
 
@@ -28,12 +28,14 @@ class Report
 		if @is_plan
 			results.each do |run|
 				run.each_with_object(report) do |result, hash|
+					next if result['status_id'].nil?
 					next unless result['created_by'] == user['id']
 					hash[STATUSES[result['status_id']]] += 1
 				end
 			end
 		else
 			results.each_with_object(report) do |result, hash|
+				next if result['status_id'].nil?
 				next unless result['created_by'] == user['id']
 				hash[STATUSES[result['status_id']]] += 1
 			end

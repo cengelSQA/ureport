@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'yaml'
-require_relative './lib/options.rb'
-require_relative './lib/report.rb'
+require_relative "#{__dir__}/lib/options.rb"
+require_relative "#{__dir__}/lib/report.rb"
 
 options = Options.parse
 

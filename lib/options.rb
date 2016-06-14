@@ -5,7 +5,7 @@ module Options
 	VALID_ATTR = ['id', 'url', 'email', 'key']
 
 	def self.parse
-		@config = 'config.yml'
+		@config = "#{__dir__}/../config.yml"
 		@options = {}
 		OptionParser.new do |opts|
 			opts.banner = "Usage: ureport [OPTIONS]"
