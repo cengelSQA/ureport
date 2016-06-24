@@ -4,6 +4,6 @@ require 'yaml'
 require_relative "#{__dir__}/lib/options.rb"
 require_relative "#{__dir__}/lib/report.rb"
 
-options = Options.parse
+option = Options.parse
 
-Report.new(options).summary
+Report.new(option).summary
